@@ -214,7 +214,10 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace T'
+run = [
+    "layout floating",
+    'move-node-to-workspace T',
+]
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.fmgjjmmmlfnkbppncabfkddbjimcfncm'
