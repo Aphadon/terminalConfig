@@ -115,6 +115,7 @@ alias vim="nvim"
 alias sshconfig="vim ~/.ssh/config"
 alias netops="ssh netops"
 alias so="source ~/.zshrc"
+alias ltr="ls -ltr"
 
 rvim() {
     if [[ "$1" == "conf" ]]
