@@ -116,5 +116,7 @@ alias sshconfig="vim ~/.ssh/config"
 alias so="source ~/.zshrc"
 alias ltr="ls -ltr"
 
-source ~/.zshrc_local
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
 
