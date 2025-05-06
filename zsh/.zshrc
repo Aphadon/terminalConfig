@@ -113,22 +113,8 @@ export PATH="$PATH:/Users/bjornkristian/Library/Python/3.9/bin"
 
 alias vim="nvim"
 alias sshconfig="vim ~/.ssh/config"
-alias netops="ssh netops"
 alias so="source ~/.zshrc"
 alias ltr="ls -ltr"
 
-rvim() {
-    if [[ "$1" == "conf" ]]
-    then
-        nvim "scp://bkj@netops//home/network/ansible/conf/"
-    fi
-    if [[ "$1" == "vars" ]]
-    then
-        nvim "scp://bkj@netops//home/network/ansible/playbooks/apn/vars/"
-    fi
-    if [[ "$1" == "new" ]]
-    then
-        nvim "scp://bkj@netops//home/network/ansible/playbooks/apn/vars/$2"
-    fi
+source ~/.zshrc_local
 
-}
