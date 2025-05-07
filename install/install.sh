@@ -1,6 +1,6 @@
 #!/bin/bash
 
-print_log() {
+print_logo() {
     cat << "EOF"
     _    ____  _   _    _    ____   ___  _   _
    / \  |  _ \| | | |  / \  |  _ \ / _ \| \ | |
@@ -87,12 +87,20 @@ is_installed() {
   esac
 }
 
+print_logo
+
 PKG_MANAGER=$(detect_package_manager)
 [ "$PKG_MANAGER" = "unknown" ] && die "No supported package manager found."
 echo "Using package manager: $PKG_MANAGER"
 
 ALL_PACKAGES=($(gather_packages "$@"))
 [ ${#ALL_PACKAGES[@]} -eq 0 ] && die "No packages specified."
+ # Append macOS-specific package
+
+if [ "$PKG_MANAGER" = "brew" ]; then
+  echo "Detected macOS with Homebrew — adding 'aerospace'"
+  ALL_PACKAGES+=("aerospace")
+fi
 
 TO_INSTALL=()
 for pkg in "${ALL_PACKAGES[@]}"; do
