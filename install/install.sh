@@ -87,6 +87,7 @@ is_installed() {
   esac
 }
 
+clear
 print_logo
 
 PKG_MANAGER=$(detect_package_manager)
