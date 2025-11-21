@@ -109,7 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:/opt/nvim-macos-x86_64/bin"
-export PATH="$PATH:/Users/bjornkristian/Library/Python/3.9/bin"
+export PATH="$PATH:/Users/$USER/Library/Python/3.9/bin"
+export PATH="$PATH:/Users/$USER/go/bin"
 
 alias vim="nvim"
 alias sshconfig="vim ~/.ssh/config"
