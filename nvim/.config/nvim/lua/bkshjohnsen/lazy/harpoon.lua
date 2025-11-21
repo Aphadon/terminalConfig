@@ -21,6 +21,10 @@ return {
         vim.keymap.set("n", "Ω", function() harpoon:list():select(2) end)
         vim.keymap.set("n", "é", function() harpoon:list():select(3) end)
         vim.keymap.set("n", "", function() harpoon:list():select(4) end)
+        vim.keymap.set("n", "œ", function() harpoon:list():select(1) end)
+        vim.keymap.set("n", "∑", function() harpoon:list():select(2) end)
+        vim.keymap.set("n", "´", function() harpoon:list():select(3) end)
+        vim.keymap.set("n", "å", function() harpoon:list():select(4) end)
 
         -- Toggle previous & next buffers stored within Harpoon list
         vim.keymap.set("n", "<C-A-P>", function() harpoon:list():prev() end)
