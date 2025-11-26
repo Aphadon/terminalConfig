@@ -116,6 +116,90 @@ alias vim="nvim"
 alias sshconfig="vim ~/.ssh/config"
 alias so="source ~/.zshrc"
 alias ltr="ls -ltr"
+alias boo="ghostty +boo"
+
+# 2. LS Global: Searches ANY text in the line
+lsg() {
+  if [ $# -eq 0 ]; then
+    ls -ltr
+    return
+  fi
+
+  ls -ltr | perl -ne '
+    BEGIN {
+      @terms = @ARGV; 
+      @ARGV = (); # <--- THIS FIXES THE ERROR. We empty the file list so Perl reads STDIN.
+      
+      $esc = "\e";
+      @colors = ("$esc\[1;31m", "$esc\[1;32m", "$esc\[1;33m", "$esc\[1;34m");
+      $reset = "$esc\[0m";
+    }
+
+    $clean = $_;
+    $clean =~ s/\e\[[0-9;]*m//g; 
+
+    $matches = 1;
+    foreach $t (@terms) {
+       if ($clean !~ /\Q$t\E/i) { $matches = 0; last; }
+    }
+
+    if ($matches) {
+       $line = $clean;
+       $i = 0;
+       foreach $t (@terms) {
+          $color = $colors[$i % 4];
+          $line =~ s/(\Q$t\E)/$color$1$reset/gi;
+          $i++;
+       }
+       print $line;
+    }
+  ' -- "$@"
+}
+
+# 3. LS Name: Searches ONLY the filename
+lsn() {
+  if [ $# -eq 0 ]; then
+    ls -ltr
+    return
+  fi
+
+  ls -ltr | perl -ne '
+    BEGIN {
+      @terms = @ARGV;
+      @ARGV = (); # <--- THIS FIXES THE ERROR.
+      
+      $esc = "\e";
+      @colors = ("$esc\[1;31m", "$esc\[1;32m", "$esc\[1;33m", "$esc\[1;34m");
+      $reset = "$esc\[0m";
+    }
+
+    $clean = $_;
+    $clean =~ s/\e\[[0-9;]*m//g;
+
+    # Using a more robust regex to split metadata (8 columns) from filename
+    # This captures the first 8 columns of whitespace-separated text as metadata ($1)
+    if ($clean =~ /^((?:\S+\s+){8})(.*)$/) {
+       $meta = $1;
+       $filename = $2;
+       
+       $matches = 1;
+       foreach $t (@terms) {
+          if ($filename !~ /\Q$t\E/i) { $matches = 0; last; }
+       }
+
+       if ($matches) {
+          $i = 0;
+          foreach $t (@terms) {
+             $color = $colors[$i % 4];
+             $filename =~ s/(\Q$t\E)/$color$1$reset/gi;
+             $i++;
+          }
+          # Use printf to avoid extra newlines if $filename already has one
+          print $meta . $filename . "\n";
+       }
+    }
+  ' -- "$@"
+}
 
 if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
