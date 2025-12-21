@@ -1,6 +1,6 @@
 require("bkshjohnsen.set")
 require("bkshjohnsen.remap")
-require("bkshjohnsen.lazy_init")
+-- require("bkshjohnsen.lazy_init")
 
 -- DO.not
 -- DO NOT INCLUDE THIS
