@@ -1,6 +1,6 @@
-require("bkshjohnsen.set")
-require("bkshjohnsen.remap")
--- require("bkshjohnsen.lazy_init")
+require("aphadon.set")
+require("aphadon.remap")
+-- require("aphadon.lazy_init")
 
 -- DO.not
 -- DO NOT INCLUDE THIS
@@ -14,7 +14,7 @@ require("bkshjohnsen.remap")
 -- DO.not
 
 local augroup = vim.api.nvim_create_augroup
-local BKSHJohnsenGroup = augroup('BKSHJohnsen', {})
+local AphadonGroup = augroup('Aphadon', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -41,14 +41,14 @@ autocmd('TextYankPost', {
 })
 
 
--- autocmd({"BufWritePre"}, {
---[     group = BKSHJohnsenGroup,
---     pattern = "*",
---     command = [[%s/\s\+$//e]],
--- })
+autocmd({"BufWritePre"}, {
+    group = AphadonGroup,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
 
 autocmd('LspAttach', {
-    group = BKSHJohnsenGroup,
+    group = AphadonGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
