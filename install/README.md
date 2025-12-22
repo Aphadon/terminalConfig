@@ -78,19 +78,19 @@ my-package:
 package-name:
   # Simple: same name on all distros
   default: package-name
-  
+
   # Or per-distro configuration
   fedora: fedora-package-name
   debian: debian-package-name
   macos:
     package: macos-package-name
     method: brew
-  
+
   # Installation method (if not standard)
   fedora:
     package: package-name
     method: copr:user/repo
-  
+
   # Tags for profile filtering
   tags: [core, dev]
 ```
@@ -107,7 +107,7 @@ package-name:
 | `function` | Custom install function | All |
 | `skip: true` | Skip on this platform | All |
 
-## 🔧 Custom Installation Functions
+## Custom Installation Functions
 
 For complex installations (architecture-specific, GitHub releases, building from source), use custom functions in `install-functions.sh`:
 
@@ -115,7 +115,7 @@ For complex installations (architecture-specific, GitHub releases, building from
 install_my_package() {
     local distro="$1"
     local arch=$(get_arch)
-    
+
     case "$distro" in
         fedora|rocky)
             sudo dnf install -y my-package
@@ -235,7 +235,7 @@ if [ -f ~/.install-profile ]; then
 fi
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### yq Not Found
 
@@ -269,10 +269,10 @@ sudo pacman -S go-yq
    ```bash
    # Fedora
    dnf search package-name
-   
+
    # Debian/Ubuntu
    apt search package-name
-   
+
    # macOS
    brew search package-name
    ```
