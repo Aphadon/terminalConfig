@@ -1,12 +1,21 @@
 # Quick Start Guide
 
-## 🚀 Installation (One Command)
+## Installation (One Command)
 
 ```bash
 git clone https://github.com/Aphadon/terminalConfig.git && cd terminalConfig/install && ./install.sh
 ```
 
-## 📋 Choose Your Profile
+## 🐚 Shell Selection
+
+During installation, you'll be prompted to choose your shell:
+1. **Zsh** (with Oh My Zsh) - Modern, feature-rich
+2. **Bash** (with Oh My Bash) - Universal, compatible
+3. **Skip** - Configure later
+
+Choose based on your preference - both work great!
+
+## Choose Your Profile
 
 ### Fedora Desktop
 ```bash
@@ -38,11 +47,11 @@ git clone https://github.com/Aphadon/terminalConfig.git && cd terminalConfig/ins
 ./install.sh --profile core,dev,desktop
 ```
 
-## 🎯 What Gets Installed
+## What Gets Installed
 
 ### Core Profile (`core`)
 - git, curl, wget, stow
-- zsh, tmux, fzf
+- bash, zsh (choose during install), tmux, fzf
 - neovim, yazi
 - jq, tree, htop
 
@@ -57,7 +66,7 @@ git clone https://github.com/Aphadon/terminalConfig.git && cd terminalConfig/ins
 ### Server Profile (`server`)
 - docker, docker-compose (if uncommented)
 
-## ⚡ Common Commands
+## Common Commands
 
 ```bash
 # Full installation
@@ -73,22 +82,31 @@ git clone https://github.com/Aphadon/terminalConfig.git && cd terminalConfig/ins
 ./install.sh --help
 ```
 
-## 📝 Post-Install
+## Post-Install
 
 ```bash
-# 1. Restart terminal or
+# 1. During installation, choose your shell:
+#    - Option 1: Zsh (with Oh My Zsh)
+#    - Option 2: Bash (with Oh My Bash)
+#    - Option 3: Skip
+
+# 2. Restart terminal or source your config
+# If you chose Zsh:
 source ~/.zshrc
 
-# 2. In tmux, install plugins
+# If you chose Bash:
+source ~/.bashrc
+
+# 3. In tmux, install plugins
 tmux
 # Press: Ctrl+b then Shift+I
 
-# 3. Check neovim
+# 4. Check neovim
 nvim
 :checkhealth
 ```
 
-## 🔧 Quick Customization
+## Quick Customization
 
 ```bash
 # Add your profile to ~/.install-profile
@@ -98,13 +116,29 @@ echo 'export INSTALL_PROFILE="core,dev,desktop"' > ~/.install-profile
 ./install.sh
 ```
 
-## 📚 More Info
+## Switch Shells Later
+
+You can always switch between Bash and Zsh:
+
+```bash
+# Switch to Zsh
+chsh -s $(which zsh)
+
+# Switch to Bash
+chsh -s $(which bash)
+
+# Log out and back in for changes to take effect
+```
+
+## More Info
 
 - [Full Installation Guide](install/README.md)
 - [Repository README](README.md)
+- [Bash vs Zsh Guide](docs/bash-vs-zsh.md)
 - [Package Configuration](install/packages.yaml)
+- [Complete Documentation](docs/README.md)
 
-## 🆘 Help
+## Help
 
 ```bash
 ./install.sh --help
@@ -113,3 +147,6 @@ echo 'export INSTALL_PROFILE="core,dev,desktop"' > ~/.install-profile
 ---
 
 **That's it! Your terminal environment is ready to go.** 🎉
+
+**Shell choice:** Bash for compatibility, Zsh for features - both work great!
+
