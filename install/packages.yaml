@@ -1,0 +1,257 @@
+# packages.yaml - Package definitions for all platforms
+# Each package can have 'tags' to control installation profiles
+
+packages:
+  # ============================================================================
+  # Core Utilities - Install everywhere
+  # ============================================================================
+  
+  git:
+    default: git
+    tags: [core]
+  
+  curl:
+    default: curl
+    tags: [core]
+  
+  wget:
+    default: wget
+    tags: [core]
+  
+  stow:
+    default: stow
+    tags: [core]
+    macos:
+      method: brew
+
+  # ============================================================================
+  # Terminal and Shell - Core tools
+  # ============================================================================
+  
+  zsh:
+    default: zsh
+    tags: [core]
+  
+  tmux:
+    default: tmux
+    tags: [core]
+  
+  fzf:
+    default: fzf
+    tags: [core]
+
+  # ============================================================================
+  # Development Tools - Standard installations
+  # ============================================================================
+  
+  ripgrep:
+    default: ripgrep
+    tags: [dev]
+    macos:
+      method: brew
+  
+  bat:
+    default: bat
+    tags: [dev]
+    macos:
+      method: brew
+  
+  eza:
+    default: eza
+    tags: [dev]
+    macos:
+      method: brew
+  
+  jq:
+    default: jq
+    tags: [core]
+  
+  tree:
+    default: tree
+    tags: [core]
+  
+  htop:
+    default: htop
+    tags: [core]
+  
+  btop:
+    default: btop
+    tags: [optional]
+    macos:
+      method: brew
+
+  # ============================================================================
+  # Development Tools - Different names per distro
+  # ============================================================================
+  
+  fd:
+    fedora: fd-find
+    debian: fd-find
+    ubuntu: fd-find
+    rocky: fd-find
+    arch: fd
+    tags: [dev]
+    macos:
+      package: fd
+      method: brew
+  
+  delta:
+    fedora: git-delta
+    debian: git-delta
+    ubuntu: git-delta
+    rocky: git-delta
+    arch: git-delta
+    tags: [dev]
+    macos:
+      package: git-delta
+      method: brew
+
+  # ============================================================================
+  # Development Tools - Complex installations
+  # ============================================================================
+  
+  neovim:
+    fedora:
+      package: neovim
+    rocky:
+      method: function
+    debian:
+      method: function
+    ubuntu:
+      method: function
+    arch:
+      package: neovim
+    tags: [core]
+    macos:
+      method: brew
+  
+  tree-sitter:
+    fedora:
+      method: function
+    rocky:
+      method: function
+    debian:
+      method: function
+    ubuntu:
+      method: function
+    arch:
+      package: tree-sitter
+    tags: [dev]
+    macos:
+      method: brew
+  
+  lazygit:
+    fedora:
+      package: lazygit
+      method: copr:dejan/lazygit
+    rocky:
+      method: function
+    debian:
+      method: function
+    ubuntu:
+      method: function
+    arch:
+      package: lazygit
+    tags: [dev]
+    macos:
+      method: brew
+
+  # ============================================================================
+  # File Managers
+  # ============================================================================
+  
+  yazi:
+    fedora:
+      package: yazi
+      method: copr:atim/yazi
+    rocky:
+      method: function
+    debian:
+      method: function
+    ubuntu:
+      method: function
+    arch:
+      package: yazi
+    tags: [core]
+    macos:
+      method: brew
+  
+  ffmpegthumbnailer:
+    default: ffmpegthumbnailer
+    tags: [optional]
+    macos:
+      method: brew
+
+  # ============================================================================
+  # Desktop Applications - GUI tools
+  # ============================================================================
+  
+  ghostty:
+    fedora:
+      method: function
+    ubuntu:
+      method: function
+    tags: [desktop, gui]
+    macos:
+      method: brew
+  
+  aerospace:
+    macos:
+      method: brew
+    tags: [desktop, gui, macos-only]
+
+  # ============================================================================
+  # Server Tools
+  # ============================================================================
+  
+  docker:
+    fedora: docker
+    rocky: docker
+    debian: docker.io
+    ubuntu: docker.io
+    arch: docker
+    tags: [server]
+  
+  docker-compose:
+    default: docker-compose
+    tags: [server]
+
+  # ============================================================================
+  # Optional packages (uncomment as needed)
+  # ============================================================================
+  
+  # nodejs:
+  #   default: nodejs
+  #   debian: nodejs
+  #   tags: [dev, optional]
+  #   macos:
+  #     package: node
+  #     method: brew
+  
+  # npm:
+  #   default: npm
+  #   arch: npm
+  #   tags: [dev, optional]
+  #   macos:
+  #     skip: true  # Comes with node
+  
+  # python3-pip:
+  #   fedora: python3-pip
+  #   debian: python3-pip
+  #   ubuntu: python3-pip
+  #   rocky: python3-pip
+  #   arch: python-pip
+  #   tags: [dev]
+  #   macos:
+  #     skip: true  # Use python3 -m pip
+  
+  go:
+    fedora: golang
+    debian: golang
+    ubuntu: golang
+    rocky: golang
+    arch: go
+    tags: [dev, optional]
+    macos:
+      package: go
+      method: brew
