@@ -1,3 +1,4 @@
 # Ignore Local files
 *local
-
+**/aerospace.toml
+**/aerospace.local.toml
