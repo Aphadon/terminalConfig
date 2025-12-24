@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
+
 # Get the directory where the script is located
-DIR="$(dirname "$0")"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# The path where AeroSpace looks for config
-TARGET="./aerospace.toml"
+MAIN_SRC="$DIR/aerospace.main.toml"
+LOCAL_SRC="$DIR/aerospace.local.toml"
+OUTPUT="$DIR/aerospace.toml"
 
-# Start with main config
-cat "$DIR/aerospace.main.toml" > "$TARGET"
+# 1. Start with the tracked main config
+cat "$MAIN_SRC" > "$OUTPUT"
 
-# Append local rules if they exist
-if [ -f "$DIR/aerospace.local.toml" ]; then
-    echo -e "\n# --- Machine Specific Rules ---" >> "$TARGET"
-    cat "$DIR/aerospace.local.toml" >> "$TARGET"
+# 2. Append local rules if they exist
+if [ -f "$LOCAL_SRC" ]; then
+    echo -e "\n# --- Local Machine Rules ---" >> "$OUTPUT"
+    cat "$LOCAL_SRC" >> "$OUTPUT"
+    echo "Successfully merged local rules."
+else
+    echo "No local rules found, using main config only."
 fi
 
-# Reload AeroSpace
+# 3. Reload AeroSpace to pick up changes
 aerospace reload-config
