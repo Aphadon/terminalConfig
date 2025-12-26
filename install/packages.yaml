@@ -5,19 +5,19 @@ packages:
   # ============================================================================
   # Core Utilities - Install everywhere
   # ============================================================================
-  
+
   git:
     default: git
     tags: [core]
-  
+
   curl:
     default: curl
     tags: [core]
-  
+
   wget:
     default: wget
     tags: [core]
-  
+
   stow:
     default: stow
     tags: [core]
@@ -27,53 +27,57 @@ packages:
   # ============================================================================
   # Terminal and Shell - Core tools
   # ============================================================================
-  
+
   zsh:
     default: zsh
     tags: [core]
-  
+
   tmux:
     default: tmux
     tags: [core]
-  
+
   fzf:
     default: fzf
     tags: [core]
 
+  navi:
+    default: navi
+    tags: [optional]
+
   # ============================================================================
   # Development Tools - Standard installations
   # ============================================================================
-  
+
   ripgrep:
     default: ripgrep
     tags: [dev]
     macos:
       method: brew
-  
+
   bat:
     default: bat
     tags: [dev]
     macos:
       method: brew
-  
+
   eza:
     default: eza
     tags: [dev]
     macos:
       method: brew
-  
+
   jq:
     default: jq
     tags: [core]
-  
+
   tree:
     default: tree
     tags: [core]
-  
+
   htop:
     default: htop
     tags: [core]
-  
+
   btop:
     default: btop
     tags: [optional]
@@ -83,7 +87,7 @@ packages:
   # ============================================================================
   # Development Tools - Different names per distro
   # ============================================================================
-  
+
   fd:
     fedora: fd-find
     debian: fd-find
@@ -94,7 +98,7 @@ packages:
     macos:
       package: fd
       method: brew
-  
+
   delta:
     fedora: git-delta
     debian: git-delta
@@ -109,7 +113,7 @@ packages:
   # ============================================================================
   # Development Tools - Complex installations
   # ============================================================================
-  
+
   neovim:
     fedora:
       package: neovim
@@ -124,7 +128,7 @@ packages:
     tags: [core]
     macos:
       method: brew
-  
+
   tree-sitter:
     fedora:
       method: function
@@ -139,7 +143,7 @@ packages:
     tags: [dev]
     macos:
       method: brew
-  
+
   lazygit:
     fedora:
       package: lazygit
@@ -159,7 +163,7 @@ packages:
   # ============================================================================
   # File Managers
   # ============================================================================
-  
+
   yazi:
     fedora:
       package: yazi
@@ -175,7 +179,7 @@ packages:
     tags: [core]
     macos:
       method: brew
-  
+
   ffmpegthumbnailer:
     default: ffmpegthumbnailer
     tags: [optional]
@@ -185,7 +189,7 @@ packages:
   # ============================================================================
   # Desktop Applications - GUI tools
   # ============================================================================
-  
+
   ghostty:
     fedora:
       method: function
@@ -194,7 +198,7 @@ packages:
     tags: [desktop, gui]
     macos:
       method: brew
-  
+
   aerospace:
     macos:
       method: brew
@@ -203,7 +207,7 @@ packages:
   # ============================================================================
   # Server Tools
   # ============================================================================
-  
+
   docker:
     fedora: docker
     rocky: docker
@@ -211,7 +215,7 @@ packages:
     ubuntu: docker.io
     arch: docker
     tags: [server]
-  
+
   docker-compose:
     default: docker-compose
     tags: [server]
@@ -219,7 +223,7 @@ packages:
   # ============================================================================
   # Optional packages (uncomment as needed)
   # ============================================================================
-  
+
   # nodejs:
   #   default: nodejs
   #   debian: nodejs
@@ -227,14 +231,14 @@ packages:
   #   macos:
   #     package: node
   #     method: brew
-  
+
   # npm:
   #   default: npm
   #   arch: npm
   #   tags: [dev, optional]
   #   macos:
   #     skip: true  # Comes with node
-  
+
   # python3-pip:
   #   fedora: python3-pip
   #   debian: python3-pip
@@ -244,7 +248,7 @@ packages:
   #   tags: [dev]
   #   macos:
   #     skip: true  # Use python3 -m pip
-  
+
   go:
     fedora: golang
     debian: golang
