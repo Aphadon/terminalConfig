@@ -205,3 +205,4 @@ if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
 
+eval "$(uv generate-shell-completion zsh)"
