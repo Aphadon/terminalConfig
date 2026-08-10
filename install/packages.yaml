@@ -30,7 +30,7 @@ packages:
 
   zsh:
     default: zsh
-    tags: [core]
+    tags: [optional]
 
   tmux:
     default: tmux
